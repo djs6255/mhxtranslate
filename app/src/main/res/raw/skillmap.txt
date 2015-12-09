@@ -1,0 +1,14 @@
+弾薬節約-Ammo Saver
+砲術-Artillery
+盗み無効-Anti-Theft
+攻撃-Attack
+ベルナ-Beruna
+細菌学-Biology
+黒炎王-Black Flame King
+爆破瓶追加-Blast C+
+裂傷-Bleeding
+属性耐性-Blight Res
+鈍器-Blunt Weapon
+爆弾強化-Bomb Boost
+泡沫-Bubbles
+接撃瓶追加-C.Range C+
