@@ -28,7 +28,7 @@ public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListe
     public void onItemSelected(AdapterView parent, View view, int pos, long id) {
         db = new DataBaseHelper(parent.getContext());
         db.getReadableDatabase();
-        Toast.makeText(parent.getContext(), "Selected Character : " + parent.getItemAtPosition(pos).toString(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(parent.getContext(), "Selected Character : " + parent.getItemAtPosition(pos).toString(), Toast.LENGTH_SHORT).show();
         View v = (View) view.getRootView();
         char[] selectedChars = new char[MainActivity.SPINNER_COUNT];
         if (v != null) {
@@ -50,6 +50,15 @@ public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListe
                 case "Items list":
                     titleText = DisplayCharList.intent.getStringExtra(MainActivity.SCREEN_MESSAGE);
                     break;
+                case "PSkill list":
+                    titleText = "Palico Skills List";
+                    break;
+                case "HArt list":
+                    titleText = "Hunter Arts List";
+                    break;
+                case "KSkill list":
+                    titleText = "Kitchen Skill List";
+                    break;
             }
             if (selected.equals(emptyCheck)) {
                 newText = titleText;
@@ -66,6 +75,15 @@ public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListe
                         break;
                     case "Items list":
                         shortList = db.getItemsByLike(skillQuery);
+                        break;
+                    case "PSkill list":
+                        shortList = db.getPSkillByLike(skillQuery);
+                        break;
+                    case "HArt list":
+                        shortList = db.getHArtByLike(skillQuery);
+                        break;
+                    case "KSkill list":
+                        shortList = db.getKSkillByLike(skillQuery);
                         break;
                 }
                 newText = titleText + " with :";

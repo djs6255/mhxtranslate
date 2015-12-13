@@ -48,6 +48,18 @@ public class DisplayCharList extends AppCompatActivity {
                 allSkills = intent.getStringExtra(MainActivity.SCREEN_MESSAGE);
                 type = "item";
                 break;
+            case "Pskill list":
+                allSkills = "Palico Skills List";
+                type = "pskill";
+                break;
+            case "HArt list":
+                allSkills = "Hunter Arts List";
+                type = "hart";
+                break;
+            case "KSkill list":
+                allSkills = "Kitchen Skill List";
+                type = "hart";
+                break;
         }
         skillList = (HashMap<String, String>)intent.getSerializableExtra(MainActivity.SKILLS_HASH);
         for (int i = 0; i < MainActivity.SPINNER_COUNT; i++) {
