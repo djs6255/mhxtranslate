@@ -12,6 +12,8 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -30,35 +32,37 @@ public class DisplayCharList extends AppCompatActivity {
     //ArrayAdapter<Character> adp1;
     //ArrayAdapter<Character> adp2;
     public static HashMap<String, String> skillList;
-    TextView textView;
+    public TextView textView;
+    public TableLayout tblLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_char_list);
         intent = getIntent();
+        String title = "";
         String allSkills = "";
         String type = "";
         switch (intent.getStringExtra(MainActivity.SCREEN_MESSAGE)) {
             case "Character skills":
-                allSkills = intent.getStringExtra(MainActivity.CHAR_LENGTH) + " " + intent.getStringExtra(MainActivity.SCREEN_MESSAGE);
+                title = intent.getStringExtra(MainActivity.CHAR_LENGTH) + " " + intent.getStringExtra(MainActivity.SCREEN_MESSAGE);
                 type = "skill";
                 break;
             case "Items list":
-                allSkills = intent.getStringExtra(MainActivity.SCREEN_MESSAGE);
+                title = intent.getStringExtra(MainActivity.SCREEN_MESSAGE);
                 type = "item";
                 break;
-            case "Pskill list":
-                allSkills = "Palico Skills List";
+            case "PSkill list":
+                title = "Palico Skills List";
                 type = "pskill";
                 break;
             case "HArt list":
-                allSkills = "Hunter Arts List";
+                title = "Hunter Arts List";
                 type = "hart";
                 break;
             case "KSkill list":
-                allSkills = "Kitchen Skill List";
-                type = "hart";
+                title = "Kitchen Skill List";
+                type = "kskill";
                 break;
         }
         skillList = (HashMap<String, String>)intent.getSerializableExtra(MainActivity.SKILLS_HASH);
@@ -79,7 +83,12 @@ public class DisplayCharList extends AppCompatActivity {
                 charArrayLists[i].add(' ');
             }
             for (Map.Entry<String, String> entry : skillList.entrySet()) {
-                allSkills += "\n " + entry.getKey() + " - " + entry.getValue();
+                if (allSkills.equals("")){
+                    allSkills = entry.getKey() + " - " + entry.getValue();
+                }
+                else {
+                    allSkills += "\n " + entry.getKey() + " - " + entry.getValue();
+                }
                 for (int i = 0; i < MainActivity.SPINNER_COUNT; i++) {
                     if (i < entry.getKey().length()) {
                         if (!charArrayLists[i].contains(entry.getKey().charAt(i))) {
@@ -109,9 +118,14 @@ public class DisplayCharList extends AppCompatActivity {
         //spinner1.setAdapter(adp1);
         //spinner2.setAdapter(adp2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if(toolbar != null){
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setTitle(title);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
         textView = (TextView) findViewById(R.id.textView);
         textView.setTextSize(22);
-        textView.setText(allSkills);
+        //textView.setText(allSkills);
         textView.setMovementMethod(new ScrollingMovementMethod());
         onSelect();
     }

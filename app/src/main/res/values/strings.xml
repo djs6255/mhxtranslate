@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MHX Translate</string>
+    <string name="title_activity_display_char_list">Select Chars</string>
+</resources>

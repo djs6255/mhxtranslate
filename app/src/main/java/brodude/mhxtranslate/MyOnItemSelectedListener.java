@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Switch;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,8 @@ public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListe
         db.getReadableDatabase();
         //Toast.makeText(parent.getContext(), "Selected Character : " + parent.getItemAtPosition(pos).toString(), Toast.LENGTH_SHORT).show();
         View v = (View) view.getRootView();
+        TableLayout tblUpdated = (TableLayout) v.findViewById(R.id.tblLayout2);
+        tblUpdated.removeAllViews();
         char[] selectedChars = new char[MainActivity.SPINNER_COUNT];
         if (v != null) {
             String emptyCheck = "";
@@ -45,19 +49,19 @@ public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListe
             String titleText = "";
             switch (DisplayCharList.intent.getStringExtra(MainActivity.SCREEN_MESSAGE)) {
                 case "Character skills":
-                    titleText = DisplayCharList.intent.getStringExtra(MainActivity.CHAR_LENGTH) + " " + DisplayCharList.intent.getStringExtra(MainActivity.SCREEN_MESSAGE);
+                    //titleText = DisplayCharList.intent.getStringExtra(MainActivity.CHAR_LENGTH) + " " + DisplayCharList.intent.getStringExtra(MainActivity.SCREEN_MESSAGE);
                     break;
                 case "Items list":
-                    titleText = DisplayCharList.intent.getStringExtra(MainActivity.SCREEN_MESSAGE);
+                    //titleText = DisplayCharList.intent.getStringExtra(MainActivity.SCREEN_MESSAGE);
                     break;
                 case "PSkill list":
-                    titleText = "Palico Skills List";
+                    //titleText = "Palico Skills List";
                     break;
                 case "HArt list":
-                    titleText = "Hunter Arts List";
+                    //titleText = "Hunter Arts List";
                     break;
                 case "KSkill list":
-                    titleText = "Kitchen Skill List";
+                    //titleText = "Kitchen Skill List";
                     break;
             }
             if (selected.equals(emptyCheck)) {
@@ -104,10 +108,18 @@ public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListe
                 }*/
                 for (Map.Entry<String, String> entry : shortList.entrySet()) {
                     newText += "\n " + entry.getKey() + "\n  - " + entry.getValue();
+                    TableRow tblRow = new TableRow(v.getContext());
+                    tblRow.setClickable(true);
+                    tblRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                    TextView myTextview = new TextView(v.getContext());
+                    myTextview.setText(entry.getKey() + "\n  - " + entry.getValue());
+                    myTextview.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                    tblRow.addView(myTextview);
+                    tblUpdated.addView(tblRow);
                 }
             }
             TextView updated = (TextView) v.findViewById(R.id.textView);
-            updated.setText(newText);
+            //updated.setText(newText);
         }
     }
 
