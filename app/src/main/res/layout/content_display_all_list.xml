@@ -98,24 +98,27 @@
                         android:gravity="left"
                         android:scrollbars="vertical"
                         android:layout_marginTop="10dp" />
-                </TableRow> -->
-
+                </TableRow>
+                -->
             </TableLayout>
+            <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent" android:layout_height="fill_parent">
 
-            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tblLayout2"
-            android:orientation="vertical"
-            android:weightSum="1"
-            android:scrollbars= "vertical"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context="brodude.mhxtranslate.DisplayCharList"
-            tools:showIn="@layout/activity_display_char_list">
+                <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tblLayout2"
+                android:orientation="vertical"
+                android:weightSum="1"
+                android:scrollbars= "vertical|horizontal"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:context="brodude.mhxtranslate.DisplayCharList"
+                tools:showIn="@layout/activity_display_char_list">
 
-            </TableLayout>
+                </TableLayout>
+            </HorizontalScrollView>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

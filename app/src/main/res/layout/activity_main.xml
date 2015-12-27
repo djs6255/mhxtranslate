@@ -1,167 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:weightSum="1"
-    tools:context="brodude.mhxtranslate.MainActivity">
-    <TableRow>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Skills by word length:"
-            android:textSize="24sp"
-            android:id="@+id/textTitle1" />
-    </TableRow>
-    <TableRow>
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:text="1"
-            android:onClick="selChars"
-            android:id="@+id/but1"
-            android:textSize="24dp"
-            android:layout_weight=".125" />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:text="2"
-            android:onClick="selChars"
-            android:id="@+id/but2"
-            android:textSize="24dp"
-            android:layout_weight=".125" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:text="3"
-            android:onClick="selChars"
-            android:id="@+id/but3"
-            android:textSize="24dp"
-            android:layout_weight=".125" />
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:text="4"
-            android:onClick="selChars"
-            android:id="@+id/but4"
-            android:textSize="24dp"
-            android:layout_weight=".125" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:text="5"
-            android:onClick="selChars"
-            android:id="@+id/but5"
-            android:textSize="24dp"
-            android:layout_weight=".125" />
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:weightSum="1"
+                tools:context="brodude.mhxtranslate.MainActivity">
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Skills by word length:"
+                        android:textSize="24sp"
+                        android:id="@+id/textTitle1" />
+                </TableRow>
+                <TableRow>
+                    <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:text="1"
+                        android:onClick="selChars"
+                        android:id="@+id/but1"
+                        android:textSize="24dp"
+                        android:layout_weight=".125" />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:text="6"
-            android:onClick="selChars"
-            android:id="@+id/but6"
-            android:textSize="24dp"
-            android:layout_weight=".125" />
+                    <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:text="2"
+                        android:onClick="selChars"
+                        android:id="@+id/but2"
+                        android:textSize="24dp"
+                        android:layout_weight=".125" />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:text="7"
-            android:onClick="selChars"
-            android:id="@+id/but7"
-            android:textSize="24dp"
-            android:layout_weight=".125" />
-    </TableRow>
-    <TableRow>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="List of carved items:"
-            android:textSize="24sp"
-            android:id="@+id/textTitle2" />
-    </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Items"
-            android:onClick="selItem"
-            android:id="@+id/butItem"
-            android:layout_alignTop="@+id/but7"
-            android:layout_alignLeft="@+id/but5"
-            android:layout_alignStart="@+id/but5" />
-    </TableRow>
-    <TableRow>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="List of palico skills:"
-            android:textSize="24sp"
-            android:id="@+id/textTitle3" />
-    </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Palico Skills"
-            android:onClick="selPskill"
-            android:id="@+id/butPskill"
-            android:layout_alignTop="@+id/but7"
-            android:layout_alignLeft="@+id/but5"
-            android:layout_alignStart="@+id/but5" />
-    </TableRow>
-    <TableRow>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="List of Hunter Arts:"
-            android:textSize="24sp"
-            android:id="@+id/textTitle4" />
-    </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hunter Arts"
-            android:onClick="selHArt"
-            android:id="@+id/butHart"
-            android:layout_alignTop="@+id/but7"
-            android:layout_alignLeft="@+id/but5"
-            android:layout_alignStart="@+id/but5" />
-    </TableRow>
-    <TableRow>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="List of Kitchen Skills:"
-            android:textSize="24sp"
-            android:id="@+id/textTitle5" />
-    </TableRow>
-    <TableRow>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kitchen Skills"
-            android:onClick="selKSkill"
-            android:id="@+id/butKskill"
-            android:layout_alignTop="@+id/but7"
-            android:layout_alignLeft="@+id/but5"
-            android:layout_alignStart="@+id/but5" />
-    </TableRow>
-</TableLayout>
+                    <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:text="3"
+                        android:onClick="selChars"
+                        android:id="@+id/but3"
+                        android:textSize="24dp"
+                        android:layout_weight=".125" />
+
+                    <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:text="4"
+                        android:onClick="selChars"
+                        android:id="@+id/but4"
+                        android:textSize="24dp"
+                        android:layout_weight=".125" />
+
+                    <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:text="5"
+                        android:onClick="selChars"
+                        android:id="@+id/but5"
+                        android:textSize="24dp"
+                        android:layout_weight=".125" />
+
+                    <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:text="6"
+                        android:onClick="selChars"
+                        android:id="@+id/but6"
+                        android:textSize="24dp"
+                        android:layout_weight=".125" />
+
+                    <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:text="7"
+                        android:onClick="selChars"
+                        android:id="@+id/but7"
+                        android:textSize="24dp"
+                        android:layout_weight=".125" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="List of Monster Weaknesses:"
+                        android:textSize="24sp"
+                        android:id="@+id/textTitleMWeak" />
+                </TableRow>
+                <TableRow>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="All Monster Weaknesses"
+                        android:onClick="selMonWeak"
+                        android:id="@+id/butMonWeak"
+                        android:layout_alignTop="@+id/but7"
+                        android:layout_alignLeft="@+id/but5"
+                        android:layout_alignStart="@+id/but5" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="List of Carved Items:"
+                        android:textSize="24sp"
+                        android:id="@+id/textTitle2" />
+                </TableRow>
+                <TableRow>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Items"
+                        android:onClick="selItem"
+                        android:id="@+id/butItem"
+                        android:layout_alignTop="@+id/but7"
+                        android:layout_alignLeft="@+id/but5"
+                        android:layout_alignStart="@+id/but5" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="List of Palico Skills:"
+                        android:textSize="24sp"
+                        android:id="@+id/textTitle3" />
+                </TableRow>
+                <TableRow>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="All P-Arts"
+                        android:onClick="selPArtAll"
+                        android:id="@+id/butPArtAll"
+                        android:layout_alignTop="@+id/but7"
+                        android:layout_alignLeft="@+id/but5"
+                        android:layout_alignStart="@+id/but5"
+                        android:layout_weight=".5"/>
+                    <!--<Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Search P-Arts"
+                        android:onClick="selPArt"
+                        android:id="@+id/butPArt"
+                        android:layout_alignTop="@+id/but7"
+                        android:layout_alignLeft="@+id/but5"
+                        android:layout_alignStart="@+id/but5"
+                        android:layout_weight=".5"/> -->
+                </TableRow>
+                <TableRow>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="All P-Skills"
+                        android:onClick="selPskillAll"
+                        android:id="@+id/butPskillAll"
+                        android:layout_alignTop="@+id/but7"
+                        android:layout_alignLeft="@+id/but5"
+                        android:layout_alignStart="@+id/but5"
+                        android:layout_weight=".5"/>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Search P-Skills"
+                        android:onClick="selPskill"
+                        android:id="@+id/butPskill"
+                        android:layout_alignTop="@+id/but7"
+                        android:layout_alignLeft="@+id/but5"
+                        android:layout_alignStart="@+id/but5"
+                        android:layout_weight=".5"/>-->
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="List of Hunter Arts:"
+                        android:textSize="24sp"
+                        android:id="@+id/textTitle4" />
+                </TableRow>
+                <TableRow>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="All H-Arts"
+                        android:onClick="selHArtAll"
+                        android:id="@+id/butHartAll"
+                        android:layout_alignTop="@+id/but7"
+                        android:layout_alignLeft="@+id/but5"
+                        android:layout_alignStart="@+id/but5"
+                        android:layout_weight=".5"/>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Search H-Arts"
+                        android:onClick="selHArt"
+                        android:id="@+id/butHart"
+                        android:layout_alignTop="@+id/but7"
+                        android:layout_alignLeft="@+id/but5"
+                        android:layout_alignStart="@+id/but5"
+                        android:layout_weight=".5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="List of Kitchen Skills:"
+                        android:textSize="24sp"
+                        android:id="@+id/textTitle5" />
+                </TableRow>
+                <TableRow>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="All K-Skills"
+                        android:onClick="selKSkillAll"
+                        android:id="@+id/butKskillAll"
+                        android:layout_alignTop="@+id/but7"
+                        android:layout_alignLeft="@+id/but5"
+                        android:layout_alignStart="@+id/but5"
+                        android:layout_weight=".5"/>
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Search K-Skills"
+                        android:onClick="selKSkill"
+                        android:id="@+id/butKskill"
+                        android:layout_alignTop="@+id/but7"
+                        android:layout_alignLeft="@+id/but5"
+                        android:layout_alignStart="@+id/but5"
+                        android:layout_weight=".5"/>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="List of Key Quests:"
+                        android:textSize="24sp"
+                        android:id="@+id/textTitle6" />
+                </TableRow>
+                <TableRow>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Key Quests"
+                        android:onClick="selKQuest"
+                        android:id="@+id/butKQuest"
+                        android:layout_alignTop="@+id/but7"
+                        android:layout_alignLeft="@+id/but5"
+                        android:layout_alignStart="@+id/but5" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

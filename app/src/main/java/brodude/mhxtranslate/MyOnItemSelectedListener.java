@@ -63,9 +63,29 @@ public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListe
                 case "KSkill list":
                     //titleText = "Kitchen Skill List";
                     break;
+                case "KQuest list":
+                    selected = "";
+                    //titleText = "Kitchen Skill List";
+                    break;
             }
             if (selected.equals(emptyCheck)) {
                 newText = titleText;
+
+                /*if (DisplayCharList.intent.getStringExtra(MainActivity.SCREEN_MESSAGE).equals("KQuest list")) {
+                    HashMap<String, String> shortList = db.getKQuestByLocRank("Village", "1");
+
+                    for (Map.Entry<String, String> entry : shortList.entrySet()) {
+                        newText += "\n " + entry.getKey() + "\n  - " + entry.getValue();
+                        TableRow tblRow = new TableRow(v.getContext());
+                        tblRow.setClickable(true);
+                        tblRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                        TextView myTextview = new TextView(v.getContext());
+                        myTextview.setText(entry.getKey() + "\n  - " + entry.getValue());
+                        myTextview.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                        tblRow.addView(myTextview);
+                        tblUpdated.addView(tblRow);
+                    }
+                }*/
             }
             else {
                 String skillQuery = selected.replaceFirst("\\s+$", "") + "%";
@@ -118,7 +138,7 @@ public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListe
                     tblUpdated.addView(tblRow);
                 }
             }
-            TextView updated = (TextView) v.findViewById(R.id.textView);
+            //TextView updated = (TextView) v.findViewById(R.id.textView);
             //updated.setText(newText);
         }
     }

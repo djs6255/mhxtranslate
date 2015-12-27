@@ -24,6 +24,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="brodude.mhxtranslate.MainActivity" />
         </activity>
+        <activity
+            android:name=".DisplayAllList"
+            android:label="@string/title_activity_display_all_list"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="brodude.mhxtranslate.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

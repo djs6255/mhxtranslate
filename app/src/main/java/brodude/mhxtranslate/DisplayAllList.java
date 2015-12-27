@@ -17,10 +17,12 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
-public class DisplayCharList extends AppCompatActivity {
+public class DisplayAllList extends AppCompatActivity {
     public static Intent intent;
     public static Spinner[] spinners = new Spinner[MainActivity.SPINNER_COUNT];
     //public static Spinner spinner1;
@@ -34,11 +36,12 @@ public class DisplayCharList extends AppCompatActivity {
     public static HashMap<String, String> skillList;
     public TextView textView;
     public TableLayout tblLayout;
+    DataBaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_char_list);
+        setContentView(R.layout.activity_display_all_list);
         intent = getIntent();
         String title = "";
         String allSkills = "";
@@ -70,14 +73,69 @@ public class DisplayCharList extends AppCompatActivity {
                 type = "kskill";
                 search = "char";
                 break;
+            case "KQuest list":
+                title = "Key Quest List";
+                type = "kquest";
+                search = "all";
+                break;
+            case "MonWeak list":
+                title = "Monster Weakness List";
+                type = "monweak";
+                search = "all";
+                break;
+            case "PArt list":
+                title = "Palico Arts List";
+                type = "part";
+                search = "all";
+                break;
         }
         skillList = (HashMap<String, String>)intent.getSerializableExtra(MainActivity.SKILLS_HASH);
         for (int i = 0; i < MainActivity.SPINNER_COUNT; i++) {
             int resID = getResources().getIdentifier("spin" + (i+1), "id", "brodude.mhxtranslate");
             spinners[i] = (Spinner) findViewById(resID);
             charArrayLists[i] = new ArrayList<Character>();
+            spinners[i].setVisibility(View.INVISIBLE);
         }
-        //spinner1 = (Spinner) findViewById(R.id.spin1);
+        TableLayout tblUpdated = (TableLayout) findViewById(R.id.tblLayout2);
+        tblUpdated.removeAllViews();
+        TreeMap<String, ArrayList<String>> sorted = new TreeMap<>();
+        for (Map.Entry<String, String> entry : skillList.entrySet()) {
+            if (sorted.containsKey(entry.getValue())) {
+                ArrayList<String> temp = new ArrayList<>(sorted.get(entry.getValue()));
+                temp.add(entry.getKey());
+                Collections.sort(temp);
+                sorted.put(entry.getValue(), temp);
+
+            }
+            else {
+                ArrayList<String> temp = new ArrayList<String>();
+                temp.add(entry.getKey());
+                sorted.put(entry.getValue(), temp);
+            }
+        }
+
+        for (Map.Entry<String, ArrayList<String>> entry : sorted.entrySet()) {
+            TableRow tblRow = new TableRow(tblUpdated.getContext());
+            tblRow.setClickable(true);
+            tblRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            TextView myTextview = new TextView(tblUpdated.getContext());
+            myTextview.setText(entry.getKey());
+            myTextview.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+            tblRow.addView(myTextview);
+            tblUpdated.addView(tblRow);
+
+            for (String list : entry.getValue()){
+                TableRow tblRowtmp = new TableRow(tblUpdated.getContext());
+                tblRowtmp.setClickable(true);
+                tblRowtmp.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                TextView myTextviewtmp = new TextView(tblUpdated.getContext());
+                myTextviewtmp.setText(list);
+                myTextviewtmp.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+                tblRowtmp.addView(myTextviewtmp);
+                tblUpdated.addView(tblRowtmp);
+            }
+        }
+        /*//spinner1 = (Spinner) findViewById(R.id.spin1);
         //spinner2 = (Spinner) findViewById(R.id.spin2);
         //charArrayList1 = new ArrayList<Character>();
         //charArrayList2 = new ArrayList<Character>();
@@ -112,7 +170,7 @@ public class DisplayCharList extends AppCompatActivity {
                 //}
                 //if (!charArrayList2.contains(entry.getKey().charAt(1))) {
                 //    charArrayList2.add(entry.getKey().charAt(1));
-               // }
+                // }
             }
         }
         for (int i = 0; i < MainActivity.SPINNER_COUNT; i++) {
@@ -122,7 +180,7 @@ public class DisplayCharList extends AppCompatActivity {
         //adp1 = new ArrayAdapter<Character>(this,android.R.layout.simple_spinner_item, charArrayList1);
         //adp2 = new ArrayAdapter<Character>(this,android.R.layout.simple_spinner_item, charArrayList2);
         //spinner1.setAdapter(adp1);
-        //spinner2.setAdapter(adp2);
+        //spinner2.setAdapter(adp2);*/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if(toolbar != null){
             setSupportActionBar(toolbar);
@@ -133,10 +191,10 @@ public class DisplayCharList extends AppCompatActivity {
         //textView.setTextSize(22);
         //textView.setText(allSkills);
         //textView.setMovementMethod(new ScrollingMovementMethod());
-        onSelect();
+        //onSelect();
     }
 
-    protected void onSelect() {
+    /*protected void onSelect() {
         for (int i = 0; i < MainActivity.SPINNER_COUNT; i++) {
             spinners[i].setAdapter(adps[i]);
             spinners[i].setOnItemSelectedListener(new MyOnItemSelectedListener());
@@ -145,5 +203,5 @@ public class DisplayCharList extends AppCompatActivity {
         //spinner1.setOnItemSelectedListener(new MyOnItemSelectedListener());
         //spinner2.setAdapter(adp2);
         //spinner2.setOnItemSelectedListener(new MyOnItemSelectedListener());
-    }
+    }*/
 }
